@@ -1,273 +1,189 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZappyFox | Hyper Casual Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>Zappy Fox | Hyper-Casual Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* --- TEMEL AYARLAR --- */
-        :root {
-            --main-color: #ff6600; /* Tilki Turuncusu */
-            --bg-color: #121212;   /* Koyu Zemin */
-            --card-bg: #1e1e1e;    /* Kart Rengi */
-            --text-white: #ffffff;
-            --text-gray: #bbbbbb;
-        }
-
-        * {
+        * { box-sizing: border-box; }
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            line-height: 1.6;
+        /* Arka Plan Efekti */
+        .glow-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 10%, #ff8c0022 0%, #050505 60%);
+            z-index: -1;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-
-        /* --- ÜST MENÜ (HEADER) --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: rgba(18, 18, 18, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--main-color);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: white;
-        }
-
-        .logo span { color: var(--main-color); }
-
-        nav ul { display: flex; gap: 20px; }
-        
-        nav a { 
-            font-weight: 600; 
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-        
-        nav a:hover { color: var(--main-color); }
-
-        /* --- GİRİŞ BÖLÜMÜ (HERO) --- */
+        /* Hero Alanı */
         .hero {
-            height: 80vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle, #2e1a0f 0%, #121212 80%);
             padding: 20px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            font-weight: 900;
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #ff8c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
         }
 
-        .hero h1 span { color: var(--main-color); }
-
-        .hero p {
+        .subtitle {
             font-size: 1.2rem;
-            color: var(--text-gray);
+            letter-spacing: 5px;
+            color: #ff8c00;
+            text-transform: uppercase;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* YENİ: Slogan Stili */
+        .promo-text {
+            font-size: 1.1rem;
             max-width: 600px;
-            margin-bottom: 40px;
+            line-height: 1.6;
+            margin-top: 25px;
+            color: #ccc;
+            font-weight: 300;
         }
 
-        .btn-main {
-            background-color: var(--main-color);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+        /* Kare Bölümler (Features) */
+        .section-container {
+            max-width: 1200px;
+            margin: -50px auto 100px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
         }
 
-        .btn-main:hover {
-            background-color: #ff8533;
-            transform: scale(1.05);
-        }
-
-        /* --- OYUNLAR BÖLÜMÜ --- */
-        .section {
-            padding: 80px 5%;
-        }
-
-        .section-title {
+        .box {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 140, 0, 0.2);
+            padding: 40px;
+            width: 350px;
+            border-radius: 24px;
             text-align: center;
+            transition: all 0.4s ease;
+            cursor: default;
+        }
+
+        .box:hover {
+            transform: translateY(-15px);
+            border-color: #ff8c00;
+            box-shadow: 0 10px 40px rgba(255, 140, 0, 0.15);
+        }
+
+        .box i {
             font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            color: var(--main-color);
+            color: #ff8c00;
+            margin-bottom: 20px;
         }
 
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .box h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
 
-        .game-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid #333;
+        .box p {
+            color: #999;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 100px 20px 40px;
+            border-top: 1px solid #111;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            text-decoration: none;
             transition: 0.3s;
         }
 
-        .game-card:hover {
-            border-color: var(--main-color);
-            transform: translateY(-5px);
+        .social-icons a:hover { color: #ff8c00; }
+
+        .copyright {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #444;
         }
 
-        .game-icon {
-            height: 200px;
-            background-color: #252525;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
+        /* Animasyon */
+        .reveal {
+            animation: revealUp 1s ease forwards;
         }
 
-        .game-info { padding: 25px; }
-        
-        .game-info h3 { margin-bottom: 10px; font-size: 1.4rem; }
-        
-        .game-info p { 
-            color: var(--text-gray); 
-            font-size: 0.9rem; 
-            margin-bottom: 20px; 
-            min-height: 50px;
-        }
-
-        .link-text {
-            color: var(--main-color);
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        /* --- HAKKIMIZDA --- */
-        .about-box {
-            background-color: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid #333;
-        }
-
-        /* --- ALT BİLGİ (FOOTER) --- */
-        footer {
-            background-color: black;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid #333;
-            margin-top: 50px;
-        }
-
-        .footer-links { margin-bottom: 20px; }
-        
-        .footer-links a { 
-            margin: 0 10px; 
-            color: var(--text-gray); 
-            font-size: 0.9rem; 
-        }
-
-        .copyright { color: #666; font-size: 0.8rem; }
-
-        /* MOBİL UYUM */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav { display: none; } /* Mobilde menüyü gizle */
-            .section { padding: 60px 20px; }
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">ZAPPY<span>FOX</span></div>
-        <nav>
-            <ul>
-                <li><a href="#games">Oyunlar</a></li>
-                <li><a href="#about">Biz Kimiz?</a></li>
-                <li><a href="#contact">İletişim</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="glow-bg"></div>
 
-    <section class="hero">
-        <h1>OYUNUN EN <br><span>KURNAZ</span> HALİ</h1>
-        <p>ZappyFox Stüdyo sunar: Hızlı, eğlenceli ve bağımlılık yapıcı mobil deneyimler.</p>
-        <a href="#games" class="btn-main">Oyunları Gör</a>
+    <section class="hero reveal">
+        <h1>ZAPPY FOX</h1>
+        <div class="subtitle">Arcade Gaming Studio</div>
+        <p class="promo-text">Got 5 minutes? Jump into Zappy Fox and turn your short break into a fast, fun escape.</p>
     </section>
 
-    <section id="games" class="section">
-        <h2 class="section-title">Projelerimiz</h2>
-        <div class="games-grid">
-            
-            <div class="game-card">
-                <div class="game-icon">🦊</div>
-                <div class="game-info">
-                    <h3>Parkour Master 2D</h3>
-                    <p>Reflekslerini test et, engelleri aş! Pixel-art tarzıyla nostaljik bir koşu oyunu.</p>
-                    <a href="#" class="link-text">İncele →</a>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <div class="game-icon">🚀</div>
-                <div class="game-info">
-                    <h3>Gizli Proje</h3>
-                    <p>ZappyFox mutfağında hazırlanan yepyeni bir hyper casual efsanesi.</p>
-                    <span style="color: #666; font-size: 0.8rem;">Geliştirme Aşamasında...</span>
-                </div>
-            </div>
-
+    <div class="section-container">
+        <div class="box reveal" style="animation-delay: 0.2s;">
+            <i class="fas fa-bolt"></i>
+            <h3>High Speed</h3>
+            <p>Mechanics that push your boundaries. Experience gaming at the speed of thought.</p>
         </div>
-    </section>
 
-    <section id="about" class="section">
-        <div class="about-box">
-            <h2 style="color: var(--main-color); margin-bottom: 20px;">STÜDYO</h2>
-            <p style="color: var(--text-gray); font-size: 1.1rem;">
-                Biz ZappyFox olarak karmaşadan uzak duruyoruz. Tek amacımız var: 
-                Sana otobüste, tenefüste veya sıkıldığın o 5 dakikalık arada 
-                en eğlenceli anları yaşatmak.
-            </p>
+        <div class="box reveal" style="animation-delay: 0.4s;">
+            <i class="fas fa-fingerprint"></i>
+            <h3>Unique Touch</h3>
+            <p>Every pixel is hand-crafted. We focus on the details that make the gameplay feel alive.</p>
         </div>
-    </section>
 
-    <footer id="contact">
-        <div class="footer-links">
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
-            <a href="#">Email</a>
-            <a href="#">Gizlilik Politikası</a>
+        <div class="box reveal" style="animation-delay: 0.6s;">
+            <i class="fas fa-globe-americas"></i>
+            <h3>Global Fun</h3>
+            <p>No language barrier. Just pure, addictive fun for everyone, everywhere.</p>
         </div>
-        <p class="copyright">© 2026 ZappyFox Games. Tüm hakları saklıdır.</p>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 ZAPPY FOX STUDIO. BEYOND THE ARCADE.</p>
     </footer>
 
 </body>
